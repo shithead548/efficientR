@@ -12,8 +12,8 @@ after_success:
   - git config user.name "Colin Gillespie"
   - git config user.email "csgillespie@gmail.com"
   - git config --global push.default simple
-  - git remote add upstream "https://$GH_TOKEN@github.com/csgillespie/efficient_r.git"
-  - git fetch upstream
+  - git remote add upstream "https://$GH_TOKEN@github.com/csgillespie/efficientR.git"
+  - git fetch upstream 2>err.txt
   - git checkout gh-pages
   - cp -fvr $BASE_REPO/*html $BASE_REPO/libs/ .
   - git add *.html; git add libs/
