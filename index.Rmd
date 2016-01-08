@@ -1,0 +1,54 @@
+--- 
+title: "Efficient R programming"
+author: "Colin Gillespie and Robin Lovelace"
+date: "`r Sys.Date()`"
+knit: "bookdown::render_book"
+output:
+  bookdown::html_chapters:
+    css: style.css
+    md_extensions: +markdown_in_html_blocks
+  bookdown::pdf_book:
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    latex_engine: xelatex
+documentclass: book
+bibliography: refs.bib
+biblio-style: apalike
+link-citations: yes
+---
+
+__Dependencies for this book__
+
+This book has been written in **Markdown** and was built with the bookdown package.
+This and other dependencies are can be installed with following code.
+
+```{r eval=FALSE}
+# Install development version of the bookdown package
+install.packages("bookdown", repos = "http://yihui.name/xran")
+```
+
+The CRAN packages are as follows.
+
+```{r eval=FALSE}
+pkgs = c(
+  "numbers", "dplyr", "readxl",
+  "readr", "grid", "png",
+  "rbenchmark", "microbenchmark",
+  "fortunes", "pryr", "drat", "ggplot2")
+
+to_install = pkgs[!pkgs %in% installed.packages()]
+if(length(to_install))
+  install.packages(to_install)
+```
+
+GitHub packages to install.
+
+```{r eval=FALSE}
+gh_pkgs = c("rstudio/profvis", "csgillespie/efficient_pkg")
+devtools::install_github(gh_pkgs)
+```
+
+
+
+

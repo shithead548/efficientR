@@ -1,0 +1,31 @@
+language: r
+sudo: required
+install_r:
+- devtools
+script:
+- Rscript -e 'devtools::install_github("rstudio/bookdown")'
+- Rscript -e 'bookdown::render_book("index.Rmd")'
+after_success:
+- BASE_REPO=$PWD
+- cd ..; mkdir gh-pages; cd gh-pages
+- git init
+- git config user.name "Colin Gillespie"
+- git config user.email "csgillespie@gmail.com"
+- git config --global push.default simple
+- git remote add upstream "https://$GH_TOKEN@github.com/csgillespie/efficient_r.git"
+- git fetch upstream
+- git checkout gh-pages
+- cp -fvr $BASE_REPO/*html $BASE_REPO/libs/ .
+- git add *.html; git add libs/
+- git commit -a -m "Updating book"
+- git status
+- git push
+after_failure:
+- ./travis-tool.sh dump_logs
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+env:
+  global:
+    secure: vIt6SP2qO0VsTKazA442QNYLKhSiayhscXqkG4kgbGicalWB4sjrp3WO+0fF/NL1TfXREEZw9+cZyLA7DTOcCh9fgSEsofrpWytWz5Z0728YXw0u8NScvk0xGNOJtyVBvqH9OlVA0UTkoTcbdc2u6l41FfxgTd9iy0Q4vY5d2M1aJvXSTWvqrs0JnCLTjZG7QEtcKSI8/JgTt3Jj2PMYD9iGbwuPmwnYXIvVppBxMe91aqIc1Qr1LwaNZ+6vjt97EacB1SNb+idimRjGMflMDb2uSAqumvqxaX+q5tK5/rKZyETlPjtR0XZhYwmEKIZIApLWHRrMZAgQE+wSge3j0AA4RdKm0X6LAZCCCi9IB8C5Fr9Cb633lTHxQSPFIvjp5D7Q6CjttNxUaeS8Ivy5+iDnECWcaYsT2m8fX/QppffH+vGAA0T+/kdfO2jhIsyngZv7BcssbxK9aKjEeNCw7PsmqnVwNNrJoXKMMz7uCP1KR+i/Jo4Z7VJ+zT399mmJuAQC5kQDhv5vPGzmuwivizTkcQ1fnarjFUH8Z05gElnZfsbcBhwKAs53l0tfRhKOE7Gu/BkgZhSr6Li6OSj+6s4mtsiRHJCBTjOZKiJZhau7UfmXfWOaj1MYzdAteqoweHQYNvl5Rehw895j+pDjEYTkCuG77KS+l1W4RGXInwI=
