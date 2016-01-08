@@ -1,31 +1,33 @@
 language: r
 sudo: required
 install_r:
-- devtools
+  - devtools
 script:
-- Rscript -e 'devtools::install_github("rstudio/bookdown")'
-- Rscript -e 'bookdown::render_book("index.Rmd")'
+  - Rscript -e 'devtools::install_github("rstudio/bookdown")'
+  - Rscript -e 'bookdown::render_book("index.Rmd")'
 after_success:
-- BASE_REPO=$PWD
-- cd ..; mkdir gh-pages; cd gh-pages
-- git init
-- git config user.name "Colin Gillespie"
-- git config user.email "csgillespie@gmail.com"
-- git config --global push.default simple
-- git remote add upstream "https://$GH_TOKEN@github.com/csgillespie/efficient_r.git"
-- git fetch upstream
-- git checkout gh-pages
-- cp -fvr $BASE_REPO/*html $BASE_REPO/libs/ .
-- git add *.html; git add libs/
-- git commit -a -m "Updating book"
-- git status
-- git push
+  - BASE_REPO=$PWD
+  - cd ..; mkdir gh-pages; cd gh-pages
+  - git init
+  - git config user.name "Colin Gillespie"
+  - git config user.email "csgillespie@gmail.com"
+  - git config --global push.default simple
+  - git remote add upstream "https://$GH_TOKEN@github.com/csgillespie/efficient_r.git"
+  - git fetch upstream
+  - git checkout gh-pages
+  - cp -fvr $BASE_REPO/*html $BASE_REPO/libs/ .
+  - git add *.html; git add libs/
+  - git commit -a -m "Updating book"
+  - git status
+  - git push
 after_failure:
-- ./travis-tool.sh dump_logs
+  - ./travis-tool.sh dump_logs
+
 notifications:
   email:
     on_success: change
     on_failure: change
+
 env:
   global:
-    secure: vIt6SP2qO0VsTKazA442QNYLKhSiayhscXqkG4kgbGicalWB4sjrp3WO+0fF/NL1TfXREEZw9+cZyLA7DTOcCh9fgSEsofrpWytWz5Z0728YXw0u8NScvk0xGNOJtyVBvqH9OlVA0UTkoTcbdc2u6l41FfxgTd9iy0Q4vY5d2M1aJvXSTWvqrs0JnCLTjZG7QEtcKSI8/JgTt3Jj2PMYD9iGbwuPmwnYXIvVppBxMe91aqIc1Qr1LwaNZ+6vjt97EacB1SNb+idimRjGMflMDb2uSAqumvqxaX+q5tK5/rKZyETlPjtR0XZhYwmEKIZIApLWHRrMZAgQE+wSge3j0AA4RdKm0X6LAZCCCi9IB8C5Fr9Cb633lTHxQSPFIvjp5D7Q6CjttNxUaeS8Ivy5+iDnECWcaYsT2m8fX/QppffH+vGAA0T+/kdfO2jhIsyngZv7BcssbxK9aKjEeNCw7PsmqnVwNNrJoXKMMz7uCP1KR+i/Jo4Z7VJ+zT399mmJuAQC5kQDhv5vPGzmuwivizTkcQ1fnarjFUH8Z05gElnZfsbcBhwKAs53l0tfRhKOE7Gu/BkgZhSr6Li6OSj+6s4mtsiRHJCBTjOZKiJZhau7UfmXfWOaj1MYzdAteqoweHQYNvl5Rehw895j+pDjEYTkCuG77KS+l1W4RGXInwI=
+    secure: Y1Qr5n9XgEb2yDv+rJ3+OxWSu+oRulPaSQvSvgsMDRSNOpEejFSyzxxtM/1k8t0OtmiHCjvhgaq00lU0ZpHHdycDO30EGKprA+dt/TAOUpkAnbZtXBYAqvcbitUrcR6YtDRSpJfwmM89Kq/vsPmc9bA93N2Lc0w19H0zUxhL0xExNvPQ5nHllLgPyJgik2qVeESxHqNhfKBXIsd42YZCkfpby5AM+nlxRo70i6ZY2W5Ow7X3WH6RNkt9F3mIODl+9X2qFNI3JoAqZUZal/UkUlXmtnUZ7qeuHff9IHkHQ1Iq5cRY3F7w+gGg2o+wDuDWa898ZEHpj8rOw4BQ0HvESlljAFPWtI4lUqHKy5EqpIR9bLO3h4TtgLI1FuTmEcwtxtq4QKizQD8KOnb9VEI6lO2F0Gg8E4836QkYBmumrk8u7wBtoSZ+znCkfeuo4TdAUgyI89VQGX/TMNV1jZP1CzcvLXq24ZfdAIXY/I4cEdy8dAEDbhwEKQ40ECHT84G35TRbeV89PbW3RdyNTmeIa50HQg4d/p+ktdCN+mqfDAYSDluU+rVeUF6SDyYi5SxedqriNTvb7wi5CQoJwtwcTa7zRd5+8b5C1NUWzXWt9sXhpIRiQz/Bzmhfm0bIkJhIRuyNZD5nU5nVNlsqanZwjrFtFSCJFAVDJK1MPv8q6P8=
