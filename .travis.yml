@@ -3,7 +3,7 @@ sudo: required
 install_r:
   - devtools
 script:
-  - Rscript -e 'devtools::install_github("csgillespie/benchmarkmeData")'
+  - Rscript -e 'devtools::install_github("csgillespie/benchmarkme-data")'
   - Rscript -e 'devtools::install_github("csgillespie/benchmarkme")'
   - Rscript -e 'devtools::install_github("rstudio/bookdown")'
   - Rscript -e 'bookdown::render_book("index.Rmd")'
