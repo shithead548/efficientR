@@ -21,21 +21,19 @@ link-citations: yes
 __Dependencies for this book__
 
 This book has been written in **Markdown** and was built with the bookdown package.
-This and other dependencies are can be installed with following code.
 
-```{r eval=FALSE}
-# Install development version of the bookdown package
-install.packages("bookdown", repos = "http://yihui.name/xran")
-```
+This book has been written in **Markdown** and was built with the bookdown package. 
+The html version is also [available](https://csgillespie.github.io/efficientR/). 
+Pull requests are welcome.
 
-The CRAN packages are as follows.
+To build this book on your own system, you will need to install the following packages.
 
 ```{r eval=FALSE}
 pkgs = c(
   "numbers", "dplyr", "readxl",
   "readr", "grid", "png",
   "rbenchmark", "microbenchmark",
-  "fortunes", "pryr", "drat", "ggplot2")
+  "fortunes", "pryr", "ggplot2")
 
 to_install = pkgs[!pkgs %in% installed.packages()]
 if(length(to_install))
@@ -45,9 +43,11 @@ if(length(to_install))
 GitHub packages to install.
 
 ```{r eval=FALSE}
-gh_pkgs = c("rstudio/profvis", "csgillespie/efficient_pkg")
+gh_pkgs = c("csgillespie/efficient_pkg", "rstudio/bookdown")
 devtools::install_github(gh_pkgs)
 ```
+
+
 
 
 
