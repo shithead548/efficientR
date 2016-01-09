@@ -18,7 +18,7 @@ after_success:
   - git fetch upstream 2>err.txt
   - git checkout gh-pages
   - cp -fvr $BASE_REPO/*html $BASE_REPO/libs/ $BASE_REPO/figures/ .
-  - git add *.html; git add libs/
+  - git add *.html; git add libs/; git add figures/;
   - git commit -a -m "Updating book"
   - git status
   - git push
