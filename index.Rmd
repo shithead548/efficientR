@@ -26,7 +26,7 @@ This book has been written in **Markdown** and was built with the bookdown packa
 The html version is also [available](https://csgillespie.github.io/efficientR/). 
 Pull requests are welcome.
 
-To build this book on your own system, you will need to install the following packages.
+To build this book, the following packages must be installed.
 
 ```{r eval=FALSE}
 pkgs = c(
@@ -52,3 +52,4 @@ devtools::install_github(gh_pkgs)
 
 
 
+ 
