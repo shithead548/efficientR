@@ -18,6 +18,11 @@ biblio-style: apalike
 link-citations: yes
 ---
 
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
 __Dependencies for this book__
 
 This book has been written in **Markdown** and was built with the bookdown package.
